@@ -4,12 +4,9 @@ import com.alibaba.fastjson.JSON;
 import com.example.springbootredisdemo.common.ErrorCode;
 import com.example.springbootredisdemo.common.Result;
 import com.example.springbootredisdemo.common.Results;
-import com.example.springbootredisdemo.secKill.config.RedisPool;
+import com.example.springbootredisdemo.common.RedisPool;
 import com.example.springbootredisdemo.secKill.model.req.RedisInfoReq;
 import com.example.springbootredisdemo.secKill.service.RedisService;
-import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import redis.clients.jedis.Jedis;
@@ -17,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author ：luoyu
@@ -91,17 +89,13 @@ public class RedisServiceImpl implements RedisService {
     @Override
     public Result delnx(RedisInfoReq redisInfoReq) {
         log.warn("RedisServiceImpl delnx req:{}", JSON.toJSONString(redisInfoReq));
-
         Jedis jedis = RedisPool.getJedis();
         String key = redisInfoReq.getKey();
         String val = redisInfoReq.getValue();
-
         try {
             if (jedis == null){
                 return Results.success(0);
             }
-
-            //if redis.call('get','orderkey')=='1111' then return redis.call('del','orderkey') else return 0 end
             StringBuilder sbScript = new StringBuilder();
             sbScript.append("if redis.call('get','").append(key).append("')").append("=='").append(val).append("'").
                     append(" then ").
@@ -131,7 +125,6 @@ public class RedisServiceImpl implements RedisService {
         //构造很多的用户
         List<String> users = new ArrayList<>();
         IntStream.range(0, 1000).parallel().forEach(b -> {
-            log.warn("Test--1:" + b);
             users.add("luo-" + b);
         });
 
