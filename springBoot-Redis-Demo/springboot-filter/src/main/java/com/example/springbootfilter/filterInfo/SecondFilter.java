@@ -29,6 +29,7 @@ public class SecondFilter implements Filter {
         System.out.println("before:" + servletRequest);
         System.out.println(request.getRequestURL());
         String uri = request.getRequestURI();
+        System.out.println("request.contentType:" + request.getContentType());
         System.out.println(uri);
         if (uri.contains("Test")){
             System.out.println("过滤。。。");

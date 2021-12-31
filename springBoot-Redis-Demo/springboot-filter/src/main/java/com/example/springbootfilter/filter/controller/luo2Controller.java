@@ -1,12 +1,13 @@
 package com.example.springbootfilter.filter.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.example.springbootfilter.filter.model.req.User;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * @author ：luoyu
@@ -56,5 +57,11 @@ public class luo2Controller {
         } else {
             return "用户名或密码错误!";
         }
+    }
+
+    @PostMapping("/api/testPost.json")
+    public String testPost(@RequestBody @Validated User user){
+        System.out.println("user:" + JSON.toJSONString(user));
+        return "filterTest";
     }
 }
