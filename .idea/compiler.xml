@@ -9,12 +9,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="springBoot-Redis-Demo" />
         <module name="springboot-filter" />
+        <module name="springboot-userfilter" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="springboot-filter" target="1.8" />
       <module name="springBoot-Redis-Demo" target="1.8" />
       <module name="springboot-user-filter" target="1.8" />
+      <module name="springboot-userfilter" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -22,6 +24,7 @@
       <module name="springBoot-Redis-Demo" options="-parameters" />
       <module name="springboot-filter" options="-parameters" />
       <module name="springboot-user-filter" options="-parameters" />
+      <module name="springboot-userfilter" options="-parameters" />
     </option>
   </component>
 </project>

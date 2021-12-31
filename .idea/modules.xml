@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/snapUpDemo.iml" filepath="$PROJECT_DIR$/.idea/snapUpDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/springBoot-Redis-Demo/springBoot-Redis-Demo.iml" filepath="$PROJECT_DIR$/springBoot-Redis-Demo/springBoot-Redis-Demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/springBoot-Redis-Demo/springboot-filter/springboot-filter.iml" filepath="$PROJECT_DIR$/springBoot-Redis-Demo/springboot-filter/springboot-filter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springBoot-Redis-Demo/springboot-userfilter/springboot-userfilter.iml" filepath="$PROJECT_DIR$/springBoot-Redis-Demo/springboot-userfilter/springboot-userfilter.iml" />
     </modules>
   </component>
 </project>
