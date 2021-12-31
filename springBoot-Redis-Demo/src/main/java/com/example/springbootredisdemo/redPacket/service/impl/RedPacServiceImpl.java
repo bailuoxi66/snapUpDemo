@@ -114,27 +114,24 @@ public class RedPacServiceImpl implements RedPacService {
         watch.start();
         for(int i = 0; i < threadCount; ++i) {
             final int temp = i;
-            Thread thread = new Thread() {
-                @Override
-                public void run() {
-                    Jedis jedis = RedisPool.getJedis();
-                    int j = honBaoCount/threadCount * temp;
-                    while(true) {
-                        //开始取红包
-                        Object object = jedis.eval(tryGetHongBaoScript, 4, hongBaoList, hongBaoConsumedList, hongBaoConsumedMap, "" + j);
-                        j++;
-                        if (object != null) {
-							System.out.println("get hongBao:" + object);
-                        }else {
-                            //已经取完了
-                            if(jedis.llen(hongBaoList) == 0) {
-                                break;
-                            }
+            Thread thread = new Thread(() -> {
+                Jedis jedis = RedisPool.getJedis();
+                int j = honBaoCount/threadCount * temp;
+                while(true) {
+                    //开始取红包
+                    Object object = jedis.eval(tryGetHongBaoScript, 4, hongBaoList, hongBaoConsumedList, hongBaoConsumedMap, "" + j);
+                    j++;
+                    if (object != null) {
+                        System.out.println("get hongBao:" + object);
+                    }else {
+                        //已经取完了
+                        if(jedis.llen(hongBaoList) == 0) {
+                            break;
                         }
                     }
-                    latch.countDown();
                 }
-            };
+                latch.countDown();
+            });
             thread.start();
         }
 
