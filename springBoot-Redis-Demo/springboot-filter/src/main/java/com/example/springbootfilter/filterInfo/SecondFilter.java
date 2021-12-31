@@ -32,6 +32,7 @@ public class SecondFilter implements Filter {
         System.out.println(uri);
         if (uri.contains("Test")){
             System.out.println("过滤。。。");
+            servletResponse.getWriter().write("secondfilter already");
             return;
         }
         filterChain.doFilter(servletRequest, servletResponse);
