@@ -7,12 +7,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="springBoot-Redis-Demo" />
         <module name="springboot-filter" />
+        <module name="springBoot-Redis-Demo" />
+        <module name="ArthasQuestionOgnl" />
         <module name="springboot-userfilter" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="ArthasQuestionOgnl" target="1.8" />
       <module name="springboot-filter" target="1.8" />
       <module name="springBoot-Redis-Demo" target="1.8" />
       <module name="springboot-user-filter" target="1.8" />
@@ -21,6 +23,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ArthasQuestionOgnl" options="-parameters" />
       <module name="springBoot-Redis-Demo" options="-parameters" />
       <module name="springboot-filter" options="-parameters" />
       <module name="springboot-user-filter" options="-parameters" />
